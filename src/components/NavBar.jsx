@@ -9,6 +9,8 @@ const NavBar = () => {
                     <li> <Link href={'/'}>Home</Link> </li>
                     <li> <Link href={'/destinations'}>Destinations</Link> </li>
                     <li> <Link href={'/my-bookings'}>My Bookings</Link> </li>
+                    <li> <Link href={'/add-destination'}>Add Destinatio</Link> </li>
+
                 </ul>
                 <div>
                     <Image src={'/assets/Wanderlast.png'} alt={"logo"} width={200} height={200}>
