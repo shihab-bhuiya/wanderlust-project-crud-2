@@ -1,5 +1,6 @@
+import { DeleteModal } from "@/components/DeleteModal";
 import { EditModal } from "@/components/EditModal";
-import Image from "next/image";
+
 import React from "react";
 
 
@@ -14,9 +15,10 @@ const DetailsPage = async ({ params }) => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
-        <div className="w-6xl mx-auto mb-2 flex justify-end"> 
+        <div className="w-6xl mx-auto mb-2 flex justify-end gap-1.5 items-center"> 
 
             <EditModal result={result}/>
+            <DeleteModal result={result}/>
         </div>
       
       <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">

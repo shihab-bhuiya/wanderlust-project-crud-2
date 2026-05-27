@@ -291,6 +291,7 @@ export function EditModal({result}) {
               </Button>
 
               <Button
+              type="submit"
                 slot="close"
                 className="rounded-xl bg-black text-white"
               >
@@ -306,4 +307,4 @@ export function EditModal({result}) {
 
     </Modal>
   );
-}
+} 
