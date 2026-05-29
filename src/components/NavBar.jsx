@@ -1,8 +1,13 @@
+"use client"
+import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const NavBar = () => {
+    const { data: session } =  authClient.useSession()
+    const user = session?.user;
+    console.log("user",user);
     return (
         <nav className='flex justify-between items-center p-5 m-5'>
                 <ul className='flex gap-5'>
@@ -18,10 +23,12 @@ const NavBar = () => {
                 </div>
 
                   <ul className='flex gap-5'>
+                {user ?<li> Hi, {user?.name}</li> : null}    
                     <li> <Link href={'/profile'}>Profile</Link> </li>
-                    <li> <Link href={'/login'}>Login</Link> </li>
-                    <li> <Link href={'/sign-up'}>Sign Up</Link> </li>
-                </ul>
+                    {user ? <li> <button onClick={() => authClient.signOut()}>Logout</button> </li> : <li> <Link href={'/login'}>Login</Link> </li>}
+                    
+                 { user ? null :<li> <Link href={'/sign-up'}>Sign Up</Link> </li>  }   
+</ul>    
         </nav>
             
 

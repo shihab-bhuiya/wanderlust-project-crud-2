@@ -1,17 +1,33 @@
-"use client";
-
+"use client" 
 import { Check, Link } from "lucide-react";
-import { Button, Card, Form, Input } from "@heroui/react";
+import { Button, Card, Form, Input, toast } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+
 
 export default function SignUpPage() {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    const data = Object.fromEntries(
-      new FormData(e.currentTarget).entries()
-    );
+  const formData = new FormData(e.currentTarget);
+  const user = Object.fromEntries(formData.entries());
+const { data, error } = await authClient.signUp.email({
+    name: user.name, // required
+    email:user.email, // required
+    password: user.password, // required
+    callbackURL: "/",
+});
 
-    alert(JSON.stringify(data, null, 2));
+console.log(error, data);
+
+if(data){
+  redirect('/')
+}
+else{
+  alert(error.message);
+}
+
+
   };
 
   return (

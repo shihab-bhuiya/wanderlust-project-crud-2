@@ -3,6 +3,8 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
+import { ToastContainer } from "@contentstack/react-toastify";
+
 
 export const metadata = {
   title: "Wanderlust",
@@ -32,6 +34,7 @@ export default function RootLayout({ children }) {
 
         <main>
            {children}
+          
            </main>
 
            <Footer/>
