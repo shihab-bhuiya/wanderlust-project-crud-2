@@ -24,7 +24,7 @@ const NavBar = () => {
 
                   <ul className='flex gap-5'>
                 {user ?<li> Hi, {user?.name}</li> : null}    
-                    <li> <Link href={'/profile'}>Profile</Link> </li>
+                  {user ?<li> <Link href={'/profile'}>Profile</Link> </li> : null }  
                     {user ? <li> <button onClick={() => authClient.signOut()}>Logout</button> </li> : <li> <Link href={'/login'}>Login</Link> </li>}
                     
                  { user ? null :<li> <Link href={'/sign-up'}>Sign Up</Link> </li>  }   

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 import { ToastContainer } from "@contentstack/react-toastify";
+import { Toaster } from "react-hot-toast";
 
 
 export const metadata = {
@@ -34,7 +35,7 @@ export default function RootLayout({ children }) {
 
         <main>
            {children}
-          
+              <Toaster />
            </main>
 
            <Footer/>

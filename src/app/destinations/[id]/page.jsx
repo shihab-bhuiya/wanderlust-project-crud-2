@@ -1,3 +1,4 @@
+import BookingCard from "@/components/BookingCard";
 import { DeleteModal } from "@/components/DeleteModal";
 import { EditModal } from "@/components/EditModal";
 
@@ -8,14 +9,16 @@ const DetailsPage = async ({ params }) => {
   const { id } = await params;
 
   const res = await fetch(`http://localhost:5000/destination/${id}`, {
-    cache: "no-store",
+    headers:{
+      authorization : "logged out"
+    }
   });
 
   const result = await res.json();
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
-        <div className="w-6xl mx-auto mb-2 flex justify-end gap-1.5 items-center"> 
+        <div className="w-6xl mx-auto mb-2 flex justify-end gap-3 items-center"> 
 
             <EditModal result={result}/>
             <DeleteModal result={result}/>
@@ -24,7 +27,7 @@ const DetailsPage = async ({ params }) => {
       <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
         
         {/* Left Side Image */}
-       <div className="relative w-full h-[350px] lg:h-full overflow-hidden">
+       <div className="relative w-full h-87.5 lg:h-full overflow-hidden">
   <img
     src={result.imageUrl}
     alt={result.destinationName}
@@ -34,6 +37,7 @@ const DetailsPage = async ({ params }) => {
 
         {/* Right Side Content */}
         <div className="p-8 lg:p-12 flex flex-col justify-center">
+          
           
           {/* Category Badge */}
           <span className="w-fit bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-sm font-semibold mb-4">
@@ -90,6 +94,8 @@ const DetailsPage = async ({ params }) => {
               Save
             </button>
           </div>
+
+          <BookingCard result={result}/>
         </div>
       </div>
     </div>

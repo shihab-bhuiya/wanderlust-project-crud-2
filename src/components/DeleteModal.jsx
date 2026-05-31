@@ -8,7 +8,7 @@ export function DeleteModal({ result }) {
   const { _id } = result;
   const router = useRouter();
 
-  const handleDelete = async () => {
+  const handleDelete = async () => {  
     try {
       const res = await fetch(`http://localhost:5000/destination/${_id}`, {
         method: "DELETE",
@@ -25,7 +25,7 @@ export function DeleteModal({ result }) {
 
   return (
     <AlertDialog>
-      <Button variant="danger" className="rounded-xl">
+      <Button variant="danger-soft" className="rounded-xl">
         <BiTrash /> Delete
       </Button>
 
